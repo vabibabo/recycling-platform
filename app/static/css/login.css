@@ -1,0 +1,34 @@
+		body{
+			margin: 0;
+			padding: 0;
+			background-color: PowderBlue;
+		}
+
+		.frame{
+			position: relative;
+			height: 500px;
+			width: 500px;
+			top: 100px;
+			margin: 0 auto;
+			z-index: 99999;
+			background-color: #ffff;
+			border: 7px solid #cccc;
+		}
+        .login-box{
+			position: absolute;
+			height: 50px;
+			width: 420px;
+			line-height: 35px;
+			margin-top: 30px;
+			margin-left: 180px;
+			font-weight: 500;
+		}
+
+		.title{
+			margin-top: 50px;
+			margin-left: 200px;
+		}
+        .button{
+            margin-left: 12%;
+            font-size: 20px;
+        }

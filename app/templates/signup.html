@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Sign up{% endblock %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="../static/css/signup.css"/>
+{% endblock %}
+{% block body%}
+    <div class="frame">
+			<div class="title"><h1>Sign up</h1></div>
+			<div class="signup-box">
+				<form method="POST" onsubmit="checkpassword()" action="{{ url_for('user.signup') }}">
+					Username:<br>
+				<input type="text" name="username">
+				<br>
+				Password:<br>
+				<input type="password" name="password">
+				<br>
+				Password Again:<br>
+				<input type="password" name="password_confirm">
+				<br><br>
+				<input class="button" type="submit" value="Sign up">
+				<br>
+				</form>
+				<a href={{url_for('user.login')}}>Log in</a>
+			</div>
+	</div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        function checkpassword(){
+               var password = document.getElementsByName("password")[0];
+                var password2 = document.getElementsByName("password_confirm")[0];
+               if (password.value != password2.value){
+                alert("passwords are not same,input again");
+                return false;
+               } else if(password.value == "" || password2.value==""){
+                alert("passwords should not be empty");
+                return false;
+               }
+               else{
+                   alert("sign up successfully")
+               }
+          }
+    </script>
+{% endblock %}
+

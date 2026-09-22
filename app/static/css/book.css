@@ -1,0 +1,38 @@
+.body{
+    text-align: center;
+}
+
+.all{
+    margin:0 auto;
+    width: 694px;
+}
+.info1 {
+	height: 300px;
+	list-style: none;
+    margin: 30px;
+    font-size: 20px;
+	width: 50%;
+	display: table-cell;
+}
+.info2 {
+    height: 300px;
+	list-style: none;
+    margin: 30px;
+    font-size: 20px;
+	width: 50%;
+	display: table-cell;
+}
+.info1 li{
+	list-style: none;
+	margin:30px
+}
+
+.info2 li{
+	list-style: none;
+	margin:30px
+}
+.address {
+	margin-top: 6px;
+	float: right;
+}
+

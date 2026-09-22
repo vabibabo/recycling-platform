@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style type="text/css">
+        .hide {
+            display: none;
+        }
+
+        .c1 {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, .5);
+            z-index: 2;
+        }
+
+        .c2 {
+            background-color: white;
+            border: 10px solid #333333;
+            position: fixed;
+            width: 500px;
+            height: 345px;
+            top: 50%;
+            left: 50%;
+            z-index: 3;
+            margin-top: -150px;
+            margin-left: -200px;
+        }
+
+
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 600px;
+            height: 400px;
+            padding: 20px;
+
+            background-color: white;
+            z-index: 1002;
+            overflow: auto;
+        }
+        .black_overlay {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1001;
+            -moz-opacity: 0.8;
+            opacity: .80;
+            filter: alpha(opacity=88);
+        }
+        .c2 input {
+            margin-left: 10px;
+            border: 2px solid
+
+        }
+
+        #modal p {
+            margin-left: 80px;
+        }
+    </style>
+    {% block head %}{% endblock %}
+</head>
+<body>
+<!--  start to log in-->
+<div id="shadelog" class="c1 hide"></div>
+<div id="modallog" class="c2 hide">
+    <label style="margin-top:50px;margin-left: 10%">username<input type="text" name="username" id="username"/>
+        <span id="warn_name"></span></label>
+    <label style="margin-top:55px;margin-left: 10%">password<input type="password" name="password" id="password"/>
+        <span id="warn_pwd"></span></label><br>
+    <label style="margin-left: 30%;margin-top: 37px">
+        <input type="submit" value="submit" id="btn_log">
+        <input type="button" value="cancel" onclick="HideLog();">
+    </label>
+</div>
+<!--end of login -->
+<!--register-->
+<div id="shadesign" class="c1 hide"></div>
+<div id="modalsign" class="c2 hide">
+    <label style="margin-top:43px;margin-left: 15%">Username<input type="text" name="susername" id="susername"
+                                                                   placeholder="input your username"/>
+        <br><span id="warn_sname"></span></label>
+    <label style="margin-top:43px;margin-left: 15%">Password<input type="password" name="spassword" id="spassword"
+                                                                   placeholder="input your password"/>
+        <span id="warn_spwd1"></span></label>
+    <label style="margin-top:43px;margin-left: 15%">Confirm<input type="password"
+                                                                  name="password_confirm"
+                                                                  placeholder="ensure your password" id="spassword1"/>
+        <span id="warn_spwd2"></span></label>
+</div>
+<!--end of register -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand">Recycle</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href={{url_for('user.index')}}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-house" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                            <path fill-rule="evenodd"
+                                  d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                        </svg>
+                        Homepage<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href={{url_for('user.signup')}}>Sign up</a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link" href="{{ url_for('user.login')}}">Log in</a>
+                </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="#">customer services</a>
+                 </li>
+                 <li  class="nav-item">
+                     <a class="nav-link" href="#">my order</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="#">call center</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="#">shopping mall</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="#">my account</a>
+                 </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<div id="fade" class="black_overlay"></div>
+<div class="container"> {% block body %}{% endblock %}</div>
+</body>
+
+<script>
+    $('#btn_sign').click(function () {
+        var url = '/signup'
+        var params = {};
+        params.username = $('#susername').val();
+        params.password = $('#spassword').val();
+        params.password2 = $('#spassword1').val();
+        if (params.username == '') {
+            $('#warn_sname').text("Not be empty");
+            $('#warn_sname').css('color', 'red');
+            return false;
+        }
+        if (params.username.length < 3) {
+            $('#warn_sname').text("More than three words!");
+            $('#warn_sname').css('color', 'red');
+            return false;
+        }
+        if (params.password.length < 6) {
+            $('#warn_spwd1').text("More than six!");
+            $('#warn_spwd1').css('color', 'red');
+            return false;
+        }
+        if (params.password != params.password2) {
+            $('#warn_spwd2').text("Should be same!");
+            $('#warn_spwd2').css('color', 'red');
+            return false;
+        }
+        $.post(url, params, function (data) {
+            console.log(data);
+            if (data.flag == 1) {
+                alert('sign up successfully ' + params.username,'. Please log in if you want to post topic');
+                window.location.reload(true);
+            }
+            if (data.flag == -1) {
+                $('#warn_sname').text("username has been used");
+                $('#warn_sname').css('color', 'red');
+            }
+        })
+
+
+    })
+
+    $('#btn_log').click(function () {
+        var url = '/login'
+        var params = {};
+        params.username = $('#username').val();
+        params.password = $('#password').val();
+        if (params.username == '') {
+            $('#warn_name').text("Not be empty");
+            $('#warn_name').css('color', 'red');
+            return false;
+        }
+        if (params.password.length == '') {
+            $('#warn_pwd').text("Not be empty");
+            $('#warn_pwd').css('color', 'red');
+            return false;
+        }
+        $.post(url, params, function (res) {
+            console.log(res);
+            if (res.flag == 1) {
+                alert('login successfully ' + params.username);
+                window.location.reload(true);
+            }
+            if (res.flag == 2) {
+                alert('username and password are not exist');
+                return false;
+            }
+            if (res.flag == -1) {
+                $('#warn_pwd').text("password is wrong");
+                $('#warn_pwd').css('color', 'red');
+            }
+        })
+    })
+</script>
+{% block scripts %}
+{% endblock %}
+</html>
+
+
